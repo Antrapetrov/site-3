@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REAL VENETS EOOD | Advanced Automotive Repair & Maintenance</title>
+    <meta name="description" content="General automotive repair shops and advanced maintenance services in Venets, Bulgaria. Bridging auto mechanics with digital tracking technology.">
+    <style>
+        /* DESIGN SYSTEM: DARK GARAGE & CHROME (AUTOMOTIVE DYNAMICS) */
+        :root {
+            --carbon-black: #0E0E10;
+            --asphalt-dark: #1A1A1D;
+            --chrome-silver: #E0E4E8;
+            --racing-red: #E63946;
+            --racing-red-hover: #D62828;
+            --text-muted: #8A8D93;
+            --border-tech: rgba(255, 255, 255, 0.08);
+            
+            --font-display: 'Barlow Condensed', 'Impact', sans-serif;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--chrome-silver);
+            background-color: var(--carbon-black);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Subtle Diagnostic Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* --- DYNAMIC NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(14, 14, 16, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 2px solid var(--racing-red);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #FFF;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* CSS Logo (Hexagon Wrench/Gear vibe) */
+        .logo-mark {
+            width: 28px; height: 28px;
+            background: var(--racing-red);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-mark::after {
+            content: '';
+            width: 12px; height: 12px;
+            background: var(--carbon-black);
+            border-radius: 50%;
+        }
+
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--chrome-silver);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--racing-red); }
+
+        /* --- HERO SECTION (DIAGONAL CUT) --- */
+        header {
+            min-height: 100vh;
+            background: var(--asphalt-dark);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            display: flex;
+            align-items: center;
+            padding: 120px 5% 80px;
+            position: relative;
+        }
+
+        /* Racing Stripes */
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 15%;
+            width: 100px; height: 100%;
+            background: repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(230, 57, 70, 0.05) 10px, rgba(230, 57, 70, 0.05) 20px);
+            transform: skewX(-15deg);
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(230, 57, 70, 0.1);
+            color: var(--racing-red);
+            padding: 8px 20px;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--racing-red);
+        }
+
+        header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 6vw, 5.5rem);
+            line-height: 1;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            color: #FFF;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .btn-racing {
+            display: inline-block;
+            background: var(--racing-red);
+            color: #FFF;
+            padding: 16px 40px;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            transform: skewX(-10deg);
+        }
+
+        .btn-racing span { display: inline-block; transform: skewX(10deg); } /* Unskew text */
+
+        .btn-racing:hover {
+            background: var(--racing-red-hover);
+            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3);
+        }
+
+        /* --- SERVICES SECTION --- */
+        .section {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: #FFF;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--asphalt-dark);
+            border: 1px solid var(--border-tech);
+            padding: 40px;
+            border-top: 4px solid var(--chrome-silver);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-top-color: var(--racing-red);
+        }
+
+        .icon-box {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--racing-red);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: #FFF;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- APP PROMO (CRITICAL FOR GOOGLE PLAY CONSOLE) --- */
+        .app-promo {
+            background: var(--asphalt-dark);
+            padding: 80px 5%;
+            margin: 80px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            border-top: 1px solid var(--border-tech);
+            border-bottom: 1px solid var(--border-tech);
+        }
+
+        .app-text h2 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            color: #FFF;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .app-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .app-features li {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.02);
+            padding: 12px 20px;
+            border-left: 3px solid var(--racing-red);
+        }
+
+        /* CSS Phone Mockup - Automotive Dashboard Style */
+        .device-mockup {
+            width: 100%;
+            max-width: 320px;
+            height: 600px;
+            margin: 0 auto;
+            background: #000;
+            border: 8px solid #222;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .device-notch {
+            position: absolute;
+            top: 0; left: 50%; transform: translateX(-50%);
+            width: 100px; height: 25px;
+            background: #222;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            z-index: 10;
+        }
+
+        .app-ui {
+            padding: 50px 20px 20px;
+            flex: 1;
+            background: var(--asphalt-dark);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .ui-header {
+            text-align: center;
+            font-family: var(--font-display);
+            color: #FFF;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        /* CSS Speedometer / Diagnostic Graphic */
+        .diagnostic-ring {
+            width: 150px; height: 150px;
+            margin: 0 auto;
+            border-radius: 50%;
+            border: 8px solid #333;
+            border-top-color: var(--racing-red);
+            border-right-color: var(--racing-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+            transform: rotate(-45deg);
+        }
+        
+        .diagnostic-inner {
+            transform: rotate(45deg);
+            text-align: center;
+        }
+
+        .ui-status-card {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--racing-red);
+        }
+
+        .ui-btn {
+            margin-top: auto;
+            background: var(--racing-red);
+            color: #FFF;
+            text-align: center;
+            padding: 15px;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* --- VERIFICATION REGISTRY (D&B EXACT MATCH) --- */
+        .registry-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+        }
+
+        .data-panel {
+            background: var(--asphalt-dark);
+            border: 1px solid var(--border-tech);
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .data-row {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .data-row:last-child { border: none; margin: 0; padding: 0; }
+
+        .data-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--racing-red);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .data-value {
+            font-size: 1.1rem;
+            color: #FFF;
+            font-weight: 500;
+        }
+
+        /* Forms */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-tech);
+            color: #FFF;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--racing-red);
+            background: rgba(255,255,255,0.05);
+        }
+
+        button.btn-submit {
+            background: var(--chrome-silver);
+            color: var(--carbon-black);
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            padding: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button.btn-submit:hover {
+            background: var(--racing-red);
+            color: #FFF;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000;
+            border-top: 1px solid var(--border-tech);
+            padding: 80px 5% 40px;
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 {
+            color: var(--racing-red);
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 12px; }
+        .footer-col a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+        .footer-col a:hover { color: #FFF; }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 992px) {
+            .app-promo, .registry-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            header { clip-path: none; padding-top: 150px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <div class="logo-mark"></div>
+            REAL VENETS EOOD
+        </div>
+        <div class="nav-links">
+            <a href="#services">Auto Services</a>
+            <a href="#app">Tracking App</a>
+            <a href="#registry">Corporate Data</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="hero-content">
+            <div class="hero-badge">Automotive Repair & Maintenance</div>
+            <h1>Precision Mechanics.<br>Digital Transparency.</h1>
+            <p>Providing expert automotive repair and maintenance services in Venets, Bulgaria. We combine traditional mechanical engineering with modern digital tracking solutions for our clients.</p>
+            <a href="#app" class="btn-racing"><span>Explore AutoCare App</span></a>
+        </div>
+    </header>
+
+    <section id="services" class="section">
+        <div class="section-header">
+            <h2>Garage Capabilities</h2>
+        </div>
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="icon-box">01 / ENG</div>
+                <h3>General Auto Repair</h3>
+                <p>Comprehensive engine diagnostics, transmission repairs, and mechanical overhauls ensuring peak performance and safety for all vehicle makes.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-box">02 / MNT</div>
+                <h3>Routine Maintenance</h3>
+                <p>Authorized maintenance services including fluid changes, brake inspections, and electronic system updates to extend vehicle lifespan.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-box">03 / SYS</div>
+                <h3>Other Services</h3>
+                <p>Operating as a full-service garage (except public administration vehicles), handling complex electronic troubleshooting and structural bodywork.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="app" class="app-promo">
+        <div class="app-text">
+            <div class="hero-badge" style="background: transparent; border-color: var(--chrome-silver); color: var(--chrome-silver);">Google Play Developer</div>
+            <h2>Venets AutoCare App</h2>
+            <p style="font-size: 1.15rem; color: var(--chrome-silver); margin-bottom: 20px;">
+                To provide our customers with complete transparency over their vehicle's repair status, <strong>REAL VENETS EOOD has developed a dedicated mobile application.</strong>
+            </p>
+            <p style="color: var(--text-muted);">
+                The Venets AutoCare app eliminates the need for phone calls. Car owners can instantly see if their vehicle is in the diagnostic bay, paint shop, or ready for pickup.
+            </p>
+            
+            <ul class="app-features">
+                <li>Real-time repair status tracking (e.g., "Awaiting Parts").</li>
+                <li>Digital service history and maintenance reminders.</li>
+                <li>Direct chat with your assigned mechanic.</li>
+                <li>Digital invoicing and repair cost estimates.</li>
+            </ul>
+        </div>
+        
+        <div class="device-mockup">
+            <div class="device-notch"></div>
+            <div class="app-ui">
+                <div class="ui-header">GARAGE PORTAL</div>
+                
+                <div class="diagnostic-ring">
+                    <div class="diagnostic-inner">
+                        <span style="font-family: var(--font-display); font-size: 2rem; color: #FFF;">98%</span><br>
+                        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Engine Health</span>
+                    </div>
+                </div>
+
+                <div class="ui-status-card">
+                    <div style="font-family: var(--font-display); color: var(--racing-red); font-size: 0.9rem;">CURRENT STATUS</div>
+                    <div style="font-weight: bold; color: #FFF; font-size: 1.1rem;">Diagnostics Complete</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Ready for oil change.</div>
+                </div>
+
+                <div class="ui-btn">APPROVE SERVICE</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="registry" class="section">
+        <div class="section-header">
+            <h2>Corporate Database</h2>
+        </div>
+        <div class="registry-grid">
+            
+            <div class="data-panel">
+                <div class="data-row">
+                    <span class="data-label">Legal Entity Name</span>
+                    <span class="data-value">REAL VENETS EOOD</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Key Principal</span>
+                    <span class="data-value">AYSHE ALIOSMAN</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Industry Classification</span>
+                    <span class="data-value" style="font-size: 0.95rem; color: var(--chrome-silver);">
+                        Automotive Repair and Maintenance<br>
+                        Repair and Maintenance<br>
+                        Other Services (except Public Administration)<br>
+                        General automotive repair shops
+                    </span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Registered Facility Address</span>
+                    <span class="data-value" style="font-size: 0.95rem;">
+                        4 Vasil Levski str./blvd. Venets<br>
+                        Venets, 9751<br>
+                        Bulgaria
+                    </span>
+                </div>
+                <div class="data-row" style="border: none;">
+                    <span class="data-label">Official Support Channel</span>
+                    <span class="data-value" style="color: var(--chrome-silver);">info@realvenets.info</span>
+                </div>
+            </div>
+
+            <div>
+                <h3 style="font-family: var(--font-display); font-size: 2rem; color: #FFF; margin-bottom: 15px; text-transform: uppercase;">Book a Service</h3>
+                <p style="color: var(--text-muted); margin-bottom: 30px;">Request an appointment at our garage or submit a technical issue regarding the Venets AutoCare mobile application.</p>
+                
+                <form onsubmit="event.preventDefault();">
+                    <input type="text" placeholder="Full Name / License Plate" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <textarea placeholder="Describe the mechanical issue or app support request..." rows="4" required></textarea>
+                    <button type="submit" class="btn-submit">Submit Request</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 20px;">
+                    <div class="logo-mark"></div>
+                    REAL VENETS
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Professional automotive repair, maintenance, and digital garage services in Bulgaria.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4>App Developer Policies</h4>
+                <ul>
+                    <li><a href="#">Google Play Publisher Status</a></li>
+                    <li><a href="#">Report App Sync Issue</a></li>
+                    <li><a href="#" style="color: #FFF; text-decoration: underline;">Request Account & Data Deletion</a></li>
+                    <li><a href="#">App Permissions Guide</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Legal & Compliance</h4>
+                <ul>
+                    <li><a href="#">Garage Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy (GDPR)</a></li>
+                    <li><a href="#">Parts Warranty Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 REAL VENETS EOOD. Registered in Bulgaria. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
